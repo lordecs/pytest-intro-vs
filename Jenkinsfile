@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-  docker {
-    image 'python:3.9-slim'
-    args '-u root --privileged'
-  }
-} 
+    agent any
 
     stages {
         stage('Checkout') {
@@ -20,13 +15,13 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'main', url: 'https://github.com/lordecs/pytest-intro-vs.git'
-                sh 'python3 ops.py'
+                sh 'python ops.py'
             }
         }
         stage('Test') {
             steps {
                 sh '''
-                    python3 -m pytest
+                    python -m pytest
                 '''
             }
         }
