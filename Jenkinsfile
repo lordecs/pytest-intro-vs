@@ -10,13 +10,13 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'main', url: 'https://github.com/lordecs/pytest-intro-vs.git'
-                sh 'python ops.py'
+                sh 'python3 ops.py'
             }
         }
         stage('Test') {
             steps {
                 sh '''
-                    python -m pytest
+                    python3 -m pytest
                 '''
             }
         }
